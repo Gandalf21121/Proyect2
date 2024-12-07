@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Página de Inicio
+{% endblock %}
+
+
+{% block main %}
+<div class="container mt-5">
+    <h1>Welcome {{username or "guest"}}</h1>
+    <p>Organize your life</p>
+</div>
+{% endblock %}
