@@ -37,7 +37,7 @@ def register():
             if (password!=password2):
                  return apology("not matching passwords")
             hash=generate_password_hash(password)
-            fila=db.execute("SELECT * AFROM users WHERE name =?", username)
+            fila=db.execute("SELECT * FROM users WHERE name =?", username)
             if fila:
                  return apology("name in use")
             
@@ -99,7 +99,6 @@ def passwords():
      
      else:
           id=session["user_id"]
-          print(id)
           rows=db.execute("SELECT * FROM passwords WHERE user_id=?",id)
           for row in rows:
                row["password"]=cipher.decrypt(row["password"]).decode("utf-8")
@@ -108,11 +107,32 @@ def passwords():
 @app.route("/delete", methods=["POST"])
 def delete():
      id_passwords=request.form.get("id", type=int)
-     print(id_passwords)
-     rows= db.execute("DELETE from passwords WHERE id=?",id_passwords)
-     if rows:
-          print("correct delete")
+     db.execute("DELETE from passwords WHERE id=?",id_passwords)
      return redirect("/passwords")
+
+
+@app.route("/fun", methods=["GET", "POST"])
+def fun():
+     id=session["user_id"]
+     if request.method=="POST":
+          activity=request.form.get("activity")
+          db.execute("INSERT into fun(activities, user_id) VALUES (?,?)",activity,id)
+          return redirect("/fun")
+     
+     else:
+          rows=db.execute("SELECT * FROM fun WHERE user_id=?",id )
+          return render_template("fun.html", rows=rows)
+     
+@app.route("/delete_fun", methods=["POST"])
+def delete_fun():
+     if request.method=="POST":
+          id=request.form.get("id", type=int)
+          print (id)
+          db.execute("DELETE FROM fun WHERE id=?", id)
+
+     return redirect("/fun")
+     
+
 
 if __name__ == "__main__":
     app.run(debug=True)
