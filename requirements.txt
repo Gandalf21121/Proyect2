@@ -5,3 +5,4 @@ requests
 werkzeug  
 python-dotenv  
 cryptography  
+gunicorn
