@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Fun
+{% endblock %}
+
+
+{% block main %}
+<table>
+    
+    <thead>
+        <tr>
+        <td>Option</td>
+        <td>Activities</td>
+        
+    </tr>
+    </thead>
+    
+    <tbody>
+        <tr>
+            <form action= "/fun" method="post">
+                <td><input autofocus name="activity" required placeholder="Activity"></td>
+                <td><button class="btn btn-primary" type="submit">ADD</button></td>        
+
+            </form> 
+        </tr>
+        {%for row in rows%}
+        <tr>
+            <td>{{row["activities"]}}</td>
+            <td>    
+                <form action= "/delete_fun" method="post">
+                        <input  type="hidden" name="id" value="{{row['id']}}">
+                        <button class="btn btn-danger" type="submit">delete</button>
+                </form>
+            </td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+
+{% endblock %}
