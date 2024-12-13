@@ -7,4 +7,3 @@ python-dotenv
 cryptography
 gunicorn
 python-dotenv
-python
