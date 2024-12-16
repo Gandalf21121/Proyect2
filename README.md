@@ -1,5 +1,7 @@
 My Life
-Video Demo: <URL HERE>
+Video Demo: https://drive.google.com/file/d/1Bh2M8dmkLuIV2vxuWfMMDPsVodANVmBQ/view?usp=drive_link
+edx username: GABRIEL OPAZO
+github username: Gandalf21121
 Description:
 My Life is a personal Flask web application designed to organize and centralize key areas of my daily life. It incorporates secure login features, password management, a list of fun activities, and a dedicated section for piano and singing goals.
 
